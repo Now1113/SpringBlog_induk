@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>update in Memos</h1>
+
+<form action="#" th:action="@{'/memos/' + ${memo.mno}}" th:object="${memo}" th:method="put">
+    Mno : <input type="text" th:field="*{mno}" th:value="*{mno}" readonly>
+    MemoText : <input type="text" th:field="*{memoText}" th:value="*{memoText}">
+    <input type="submit" value="Register"><input type="reset" value="Reset">
+
+</form>
+</body>
+</html>

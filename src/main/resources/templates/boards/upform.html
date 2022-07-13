@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Project Edit</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+  <!-- Navbar -->
+
+  <div th:replace="~{/nav :: navfrag}"></div>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Project Edit</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Board Edit</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Board</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+
+            <form action="#" th:action="@{'/boards/' + ${board.bno}}" th:object="${board}" th:method="PUT" enctype="multipart/form-data">
+
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="inputBno"></label>
+                  <input type="hidden" name="bno" th:field="*{bno}"  id="inputBno" class="form-control" readonly>
+                </div>
+
+                <div data-toggle="buttons" class="btn-group" role="group" th:if="${session.isadmin != null}">
+                  <label class="btn mb-2 col-md-5 btn-light" style="">
+                    <input type="radio" name="mode"  value="block" th:field="*{block}"
+                           th:attr="checked=*{block.toString() == 'block' ? 'true' : 'false'}"  autocomplete="off">block
+                  </label>
+                  <label class="btn mb-2 col-md-5 btn-light" style="" >
+                    <input type="radio" name="mode" value="unblock" th:field="*{block}"
+                           th:attr="checked=*{block.toString() == 'unblock' ? 'true' : 'false'}" autocomplete="off">unblock
+                  </label>
+                </div>
+
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label for="inputW"></label>
+                      <input type="hidden" name="block" th:field="*{writerSeq}"  id="inputW" class="form-control" readonly>
+                    </div>
+
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label for="inputW"></label>
+                        <input type="hidden" name="block" th:field="*{views}"  class="form-control" readonly>
+                      </div>
+
+            <div class="card-body">
+              <div class="form-group">
+                <label for="inputTitle">Title</label>
+                <input type="text" name="title" th:field="*{title}"  id="inputTitle" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label for="inputContent">content</label>
+                <input type="text" name="content" th:field="*{content}"  id="inputContent" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label>이미지</label>
+                <input type="file" multiple="multiple"  name="file">
+              </div>
+
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+          <div class="row">
+            <div class="col-12">
+              <input type="submit" value="Update" class="btn btn-success float-right">
+            </div>
+          </div>
+          </form>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.2.0
+    </div>
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js"></script>
+</body>
+</html>

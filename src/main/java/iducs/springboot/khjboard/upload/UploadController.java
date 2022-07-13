@@ -15,7 +15,7 @@ public class UploadController {
     @ResponseBody
     @GetMapping("/files/{filepath}")
     public Resource downloadImage(@PathVariable String filepath) throws MalformedURLException {
-        return new UrlResource("file:"  + "C:\\springfinal\\201812058\\khj-board\\khj-board\\src\\main\\resources\\static\\files\\" + filepath);
+        return new UrlResource("file:"  + "D:\\201812058\\khj-board\\khj-board\\src\\main\\resources\\static\\files\\" + filepath);
     }
 
 

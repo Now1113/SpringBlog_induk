@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Registration Page</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition register-page">
+<div class="register-box">
+    <div class="register-logo">
+        <a href=""><b>Admin</b>LTE</a>
+    </div>
+
+    <div class="card">
+        <div class="card-body register-card-body">
+            <p class="login-box-msg">회원 정보 수정</p>
+
+            <form action="#" th:action="@{'/members/' + ${member.seq}}" th:object="${member}" th:method="PUT">
+
+                <div class="input-group mb-3">
+                    <input type="hidden" name="seq" th:field="*{seq}" class="form-control" placeholder="seq" readonly>
+                    <div class="input-group-append">
+                    </div>
+                </div>
+
+                <div data-toggle="buttons" class="btn-group" role="group" th:if="${session.isadmin != null}">
+                    <label class="btn mb-2 col-md-5 btn-light" style="">
+                        <input type="radio" name="access"  value="access" th:field="*{access}"
+                               th:attr="checked=*{access.toString() == 'access' ? 'true' : 'false'}"  autocomplete="off">Access
+                    </label>
+                    <label class="btn mb-2 col-md-5 btn-light" style="" >
+                        <input type="radio" name="access" value="unaccess" th:field="*{access}"
+                               th:attr="checked=*{access.toString() == 'unaccess' ? 'true' : 'false'}" autocomplete="off">unAccess
+                    </label>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div>
+                        <p>ID</p>
+                    </div>
+                    <input type="text" name="id" th:field="*{id}" class="form-control" placeholder="id">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div>
+                        <p>Pw</p>
+                    </div>
+                    <input type="text" name="id" th:field="*{pw}" class="form-control" placeholder="pw">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <div>
+                        <p>Name</p>
+                    </div>
+                    <input type="text" name="id" th:field="*{name}" class="form-control" placeholder="name">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <div>
+                        <p>Email</p>
+                    </div>
+                    <input type="text" name="id" th:field="*{email}" class="form-control" placeholder="email">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <div>
+                        <p>Phone</p>
+                    </div>
+                    <input type="text" name="id" th:field="*{phone}" class="form-control" placeholder="phone">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div>
+                        <p>Address</p>
+                    </div>
+                    <input type="text" name="id" th:field="*{address}" class="form-control" placeholder="address">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div>
+                        <p>Level</p>
+                    </div>
+                    <select th:field="*{level}" class="form-control" placeholder="level">
+                    <div class="input-group-append">
+                        <option value='' selected>-- 선택 --</option>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='3'>3</option>
+                    </div>
+                    </select>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div>
+                        <p>Level</p>
+                    </div>
+                    <select th:field="*{category}" class="form-control" placeholder="category">
+                        <div class="input-group-append">
+                            <option value='' selected>-- 선택 --</option>
+                            <option value='공학계'>공학계</option>
+                            <option value='예체능계'>예체능계</option>
+                            <option value='인문계'>인문계</option>
+                        </div>
+                    </select>
+                </div>
+
+
+
+                <div class="input-group mb-3" th:if="${session.isadmin == null}">
+                    <input type="hidden"  th:value="access" th:name="access"  class="form-control">
+                </div>
+
+                <!-- /.col -->
+                <div class="col-4">
+                    <input type="submit" value="Update">
+                </div>
+                <!-- /.col -->
+        </div>
+        </form>
+    </div>
+    <!-- /.form-box -->
+</div><!-- /.card -->
+</div>
+<!-- /.register-box -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+template/home1.html
+<!-- list 컬렌션의 요소가 MemoEntity 객체가 아닌 ArrayList<String>의 요소-->
+<table th:each="str : ${list}">
+    <tr>
+        <td th:text="${str} + '입니다.'"/>
+    </tr>
+</table>
+</body>
+</html>

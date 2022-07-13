@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Contacts</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <script>
+
+  </script>
+</head>
+<body class="hold-transition sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+  <!-- Navbar -->
+  
+  <div th:replace="~{/nav :: navfrag}" />
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>멤버 정보</h1>
+          </div>
+          <div class="col-sm-6">
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <!-- Default box -->
+      <div class="card card-solid" >
+        <div class="card-body pb-0">
+          <div class="row">
+            <div class="col-12 d-flex align-items-stretch flex-column">
+              <div class="card bg-light d-flex flex-fill">
+
+                <div class="card-body pt-0" th:if="${member.access == 'access'}">
+                  <div class="row">
+                    <div class="col-7">
+                      <h2 class="lead"><b>name : <td><span th:text="${member.name}"></span></td></b></h2>
+                      <ul class="ml-4 mb-0 fa-ul text-muted">
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> id: <td><span th:text="${member.id}"></span></td></li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> seq: <td><span th:text="${member.seq}"></span></td></li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> pw: <td><span th:text="${member.pw}"></span></td></li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> email: <td><span th:text="${member.email}"></span></td></li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: <td><span th:text="${member.address}"></span></td></li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: <td><span th:text="${member.phone}"></span></td></li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Level: <td><span th:text="${member.level}"></span></td></li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Category: <td><span th:text="${member.category}"></span></td></li>
+                      </ul>
+
+                      <ul class="ml-4 mb-0 fa-ul text-muted" th:if="${session.isadmin != null}">
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> 차단 여부 : <td><span th:text="${member.access}"></span></td></li>
+                      </ul>
+
+                    </div>
+
+
+                    <div class="col-5 text-center">
+                      <img src="/dist/img/user1-128x128.jpg" alt="user-avatar" class="img-circle img-fluid">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Main content -->
+                <section class="content">
+                  <!-- Default box -->
+                  <div class="card card-solid" >
+                    <div class="card-body pb-0">
+                      <div class="row">
+                        <div class="col-12 d-flex align-items-stretch flex-column">
+                          <div class="card bg-light d-flex flex-fill">
+                            <div class="card-body pt-0" th:if="${member.access == 'unaccess'}">
+                              <p>차단된 회원입니다.</p>
+                            </div>
+                            <!-- /.card-footer -->
+                          </div>
+                          <!-- /.card -->
+                          <!-- /.content -->
+                        </div>
+
+                <div class="card-footer" th:if="${(member.access == 'access') || session.isadmin != null}">
+                    <div class="text-right">
+                      <a th:href="@{'/members/' + ${member.seq} + '/upform'}" class="btn btn-sm bg-teal">
+                      <i class="fas fa-comment"></i>update
+                      </a>
+                      <a th:href="@{'/members/' + ${member.seq} + '/delform'}" class="btn btn-sm btn-primary">
+                        <i class="fas fa-user"></i> Delete
+                      </a>
+                      <a th:href="@{'/members'}" class="btn btn-sm btn-primary" th:if="${session.isadmin != null}">
+                        <i class="fas fa-copy"></i> List
+                      </a>
+                </div>
+        </div>
+        <!-- /.card-footer -->
+      </div>
+      <!-- /.card -->
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.2.0
+    </div>
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js"></script>
+</body>
+</html>

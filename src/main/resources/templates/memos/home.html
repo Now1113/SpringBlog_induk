@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+template/index.html
+<table th:each="memo : ${list}">
+    <tr>
+        <td th:text="${memo.mno}"/>
+        <td th:text="${memo.memoText}"/>
+    </tr>
+</table>
+</body>
+</html>
